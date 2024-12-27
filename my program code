@@ -12,6 +12,7 @@
 typedef struct {
     char word[MAX_WORD_LEN]; // Производитель
     char word5[MAX_WORD_LEN]; // Тип
+    float value1; // Диагональ экрана
 };
 
 
