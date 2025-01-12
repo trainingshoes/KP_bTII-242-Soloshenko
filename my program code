@@ -34,302 +34,302 @@ void add_lines_to_file(const char* filename) // 8. Добавление стро
 
 void edit_line_in_file(const char* filename, int line_number) { // 9. Изменить запись
 
-int main() {
-    system("chcp 1251");
+    int main() {
+        system("chcp 1251");
 
-    char input[100];
-    int choice;
-    printf("1) Создать запись\n2) Вывести запись\n3) Загрузить все данные из файла\n4) Найти по производителю\n5) Найти по типу\n6) Сортировать по производителю\n7) Сортировать по диагонали экрана\n8) Добавить несколько строк\n9) Изменить запись\n10) Выйти");
-    printf("\nВведите номер - ");
-    scanf_s("%d", &choice);
-    switch (choice) {
+        char input[100];
+        int choice;
+        printf("1) Создать запись\n2) Вывести запись\n3) Загрузить все данные из файла\n4) Найти по производителю\n5) Найти по типу\n6) Сортировать по производителю\n7) Сортировать по диагонали экрана\n8) Добавить несколько строк\n9) Изменить запись\n10) Выйти");
+        printf("\nВведите номер - ");
+        scanf_s("%d", &choice);
+        switch (choice) {
 
-    case 1:
-        printf("Введите строку для добавления: ");
-        getchar();
-        fgets(input, 100, stdin);
-        FILE* file = fopen("database.txt", "a");
-    
-        if (file == NULL) {
-        printf("Ошибка при открытии файла");
-        return;
-        }
+        case 1:
+            printf("Введите строку для добавления: ");
+            getchar();
+            fgets(input, 100, stdin);
+            FILE* file = fopen("database.txt", "a");
 
-        fprintf(file, "%s", string);
+            if (file == NULL) {
+                printf("Ошибка при открытии файла");
+                return;
+            }
 
-        fclose(file);
+            fprintf(file, "%s", input);
 
-        printf("Строка была успешно добавлена\n");
-        break;
+            fclose(file);
 
-    case 2:
-        const char* filename2 = "database.txt";
-        int line_number;
-        printf("Введите номер строки: ");
-        scanf("%d", &line_number);
-
-        FILE* file = fopen(filename2, "r");
-    
-        if (file == NULL) {
-        printf("Ошибка при открытии файла\n");
-        return;
-        }
-        char line[MAX_LINE_LEN];
-        int current_line = 1;
-
-        while (fgets(line, sizeof(line), file)) {
-        if (current_line == line_number) {
-            printf("%s", line);
+            printf("Строка была успешно добавлена\n");
             break;
-        }
-        current_line++;
-        }
 
-        fclose(file);
-        break;
+        case 2:
+            const char* filename2 = "database.txt";
+            int line_number;
+            printf("Введите номер строки: ");
+            scanf("%d", &line_number);
 
-    case 3:
-        char filename3[] = "database.txt";
-        FILE* file = fopen(filename3, "r");
-    
-        if (file == NULL) {
-        printf("Ошибка при открытии файла\n");
-        return;
-        }
+            FILE* file2 = fopen(filename2, "r");
 
-        char line[MAX_LINE_LEN];
-
-        while (fgets(line, sizeof(line), file) != NULL) {
-        printf("%s", line);
-        }
-
-        fclose(file);
-
-        break;
-
-    case 4:
-        const char* filename4 = "database.txt";
-        char word[MAX_WORD_LEN];
-        printf("Введите производителя ");
-        scanf("%s", word);
-        FILE* file = fopen(filename4, "r");
-
-        if (file == NULL) {
-        printf("Ошибка при открытии файла\n");
-        return;
-        }
-
-        char line[MAX_LINE_LEN];
-
-        while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, word) != NULL) {
-            printf("%s", line);
+            if (file2 == NULL) {
+                printf("Ошибка при открытии файла\n");
+                return;
             }
-        }
+            char line2[MAX_LINE_LEN];
+            int current_line = 1;
 
-    
-        fclose(file);
-
-        break;
-
-    case 5:
-        const char* filename5 = "database.txt";
-        char word5[MAX_WORD_LEN];
-        printf("Введите тип ");
-        scanf("%s", word5);
-        FILE* file = fopen(filename5, "r");
-
-        if (file == NULL) {
-        printf("Ошибка при открытии файла\n");
-        return;
-        }
-
-        char line[MAX_LINE_LEN];
-
-        while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, word5) != NULL) {
-            printf("%s", line);
+            while (fgets(line2, sizeof(line2), file2)) {
+                if (current_line == line_number) {
+                    printf("%s", line2);
+                    break;
+                }
+                current_line++;
             }
-        }
 
-    
-        fclose(file);
+            fclose(file2);
+            break;
 
-        break;
+        case 3:
+            char filename3[] = "database.txt";
+            FILE* file3 = fopen(filename3, "r");
 
-    case 6:
-        char filename6[] = "database.txt";
-        FILE* file = fopen(filename6, "r");
-        if (file == NULL) {
-        fprintf(stderr, "Ошибка при открытии файла\n");
-        exit(1);
-        }
+            if (file3 == NULL) {
+                printf("Ошибка при открытии файла\n");
+                return;
+            }
 
-    
-        int numLines = 0;
-        char line[MAX_LINE_LEN];
-        while (fgets(line, sizeof(line), file) != NULL) {
-        numLines++;
-        }
+            char line3[MAX_LINE_LEN];
 
-        rewind(file);
-        char** lines = (char**)malloc(numLines * sizeof(char*));
-        for (int i = 0; i < numLines; i++) {
-        lines[i] = (char*)malloc(MAX_LINE_LEN * sizeof(char));
-        fgets(lines[i], MAX_LINE_LEN, file);
-        }
+            while (fgets(line3, sizeof(line3), file3) != NULL) {
+                printf("%s", line3);
+            }
 
-    
-        for (int i = 0; i < numLines - 1; i++) {
-            for (int j = i + 1; j < numLines; j++) {
-                if (strcmp(lines[i], lines[j]) > 0) {
-                    char* temp = lines[i];
-                    lines[i] = lines[j];
-                    lines[j] = temp;
+            fclose(file3);
+
+            break;
+
+        case 4:
+            const char* filename4 = "database.txt";
+            char word[MAX_WORD_LEN];
+            printf("Введите производителя ");
+            scanf("%s", word);
+            FILE* file4 = fopen(filename4, "r");
+
+            if (file4 == NULL) {
+                printf("Ошибка при открытии файла\n");
+                return;
+            }
+
+            char line4[MAX_LINE_LEN];
+
+            while (fgets(line4, sizeof(line4), file4)) {
+                if (strstr(line4, word) != NULL) {
+                    printf("%s", line4);
                 }
             }
-        }
 
-        fclose(file);
 
-    
-        printf("Результат:\n");
-        for (int i = 0; i < numLines; i++) {
-            printf("%s", lines[i]);
-        }
+            fclose(file4);
 
-    
-        for (int i = 0; i < numLines; i++) {
-        free(lines[i]);
-        }
-        free(lines);
+            break;
 
-        break;
+        case 5:
+            const char* filename5 = "database.txt";
+            char word5[MAX_WORD_LEN];
+            printf("Введите тип ");
+            scanf("%s", word5);
+            FILE* file5 = fopen(filename5, "r");
 
-    case 7:
-        const char* filename7 = "database.txt"; // Имя файла
-        FILE* file = fopen(filename7, "r");
-        if (!file) {
-        printf("Не удалось открыть файл для чтения.\n");
-        return;
-        }
+            if (file5 == NULL) {
+                printf("Ошибка при открытии файла\n");
+                return;
+            }
 
-        char lines[MAX_LINES][MAX_LENGTH];
-        int count = 0;
+            char line5[MAX_LINE_LEN];
 
-        // Чтение строк из файла
-        while (fgets(lines[count], sizeof(lines[count]), file) != NULL && count <    MAX_LINES) {
-        count++;
-        }
-        fclose(file);
-
-        // Сортировка строк по числовому значению
-        for (int i = 0; i < count - 1; i++) {
-            for (int j = 0; j < count - i - 1; j++) {
-                // Извлекаем числовое значение из строки
-                float value1 = atof(strrchr(lines[j], ' ') + 1); // последняя часть строки
-                float value2 = atof(strrchr(lines[j + 1], ' ') + 1);
-
-                // Если value1 больше value2, то меняем местами
-                if (value1 > value2) {
-                    char temp[MAX_LENGTH];
-                    strcpy(temp, lines[j]);
-                    strcpy(lines[j], lines[j + 1]);
-                    strcpy(lines[j + 1], temp);
+            while (fgets(line5, sizeof(line5), file5)) {
+                if (strstr(line5, word5) != NULL) {
+                    printf("%s", line5);
                 }
             }
-        }
 
-        // Вывод отсортированных строк на экран
-        printf("Отсортированные строки:\n");
-        for (int i = 0; i < count; i++) {
-            printf("%s", lines[i]);
-        }
 
-        return 0;
+            fclose(file5);
 
-    case 8:
-        const char* filename8 = "database.txt"; // Имя файла
-        FILE* file = fopen(filename8, "a"); // Открываем файл для добавления
-        if (!file) {
-        printf("Не удается открыть файл.\n");
-        return;
-        }
+            break;
 
-        char buffer[256];
-        int line_count;
+        case 6:
+            char filename6[] = "database.txt";
+            FILE* file6 = fopen(filename6, "r");
+            if (file6 == NULL) {
+                fprintf(stderr, "Ошибка при открытии файла\n");
+                exit(1);
+            }
 
-        printf("Введите количество строк для добавления: ");
-        scanf("%d", &line_count);
-        getchar(); // Очистка буфера после scanf
 
-        for (int i = 0; i < line_count; i++) {
-            printf("Введите строку %d: ", i + 1);
-            fgets(buffer, sizeof(buffer), stdin);
-            fputs(buffer, file); // Записываем строку в файл
-        }
+            int numLines = 0;
+            char line6[MAX_LINE_LEN];
+            while (fgets(line6, sizeof(line6), file6) != NULL) {
+                numLines++;
+            }
 
-        fclose(file);
-        printf("Строки успешно добавлены в файл '%s'.\n", filename8);
-        return 0;
+            rewind(file6);
+            char** lines = (char**)malloc(numLines * sizeof(char*));
+            for (int i = 0; i < numLines; i++) {
+                lines[i] = (char*)malloc(MAX_LINE_LEN * sizeof(char));
+                fgets(lines[i], MAX_LINE_LEN, file6);
+            }
 
-    case 9:
-        const char* filename9 = "database.txt";
-        int line_number9;
 
-        printf("Введите номер строки для изменения: ");
-        scanf("%d", &line_number9);
-        getchar(); // Очистка буфера после scanf
+            for (int i = 0; i < numLines - 1; i++) {
+                for (int j = i + 1; j < numLines; j++) {
+                    if (strcmp(lines[i], lines[j]) > 0) {
+                        char* temp = lines[i];
+                        lines[i] = lines[j];
+                        lines[j] = temp;
+                    }
+                }
+            }
 
-        FILE* file = fopen(filename9, "r");
-        if (!file) {
-        printf("Не удается открыть файл.\n");
-        return;
-        }
+            fclose(file6);
 
-        // Считаем количество строк в файле
-        char** lines = NULL;
-        char buffer[256];
-        int count = 0;
 
-        while (fgets(buffer, sizeof(buffer), file)) {
-            lines = realloc(lines, sizeof(char*) * (count + 1));
-            lines[count] = _strdup(buffer);
-            count++;
-        }
+            printf("Результат:\n");
+            for (int i = 0; i < numLines; i++) {
+                printf("%s", lines[i]);
+            }
 
-        // Получаем новую строку от пользователя
-        printf("Введите новую строку: ");
-        fgets(buffer, sizeof(buffer), stdin);
 
-        // Изменяем строку
-        free(lines[line_number - 1]); // Освобождаем память старой строки
-        lines[line_number - 1] = _strdup(buffer); // И сохраняем новую строку
-
-        // Записываем все строки обратно в файл
-        file = fopen(filename9, "w");
-        if (!file) {
-            printf("Не удается открыть файл.\n");
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < numLines; i++) {
                 free(lines[i]);
             }
             free(lines);
-            return;
+
+            break;
+
+        case 7:
+            const char* filename7 = "database.txt"; // Имя файла
+            FILE* file7 = fopen(filename7, "r");
+            if (!file7) {
+                printf("Не удалось открыть файл для чтения.\n");
+                return;
+            }
+
+            char lines7[MAX_LINES][MAX_LENGTH];
+            int count7 = 0;
+
+            // Чтение строк из файла
+            while (fgets(lines7[count7], sizeof(lines7[count7]), file7) != NULL && count7 < MAX_LINES) {
+                count7++;
+            }
+            fclose(file7);
+
+            // Сортировка строк по числовому значению
+            for (int i7 = 0; i7 < count7 - 1; i7++) {
+                for (int j7 = 0; j7 < count7 - i7 - 1; j7++) {
+                    // Извлекаем числовое значение из строки
+                    float value1 = atof(strrchr(lines7[j7], ' ') + 1); // последняя часть строки
+                    float value2 = atof(strrchr(lines7[j7 + 1], ' ') + 1);
+
+                    // Если value1 больше value2, то меняем местами
+                    if (value1 > value2) {
+                        char temp7[MAX_LENGTH];
+                        strcpy(temp7, lines7[j7]);
+                        strcpy(lines7[j7], lines7[j7 + 1]);
+                        strcpy(lines7[j7 + 1], temp7);
+                    }
+                }
+            }
+
+            // Вывод отсортированных строк на экран
+            printf("Отсортированные строки:\n");
+            for (int i7 = 0; i7 < count7; i7++) {
+                printf("%s", lines7[i7]);
+            }
+
+            return 0;
+
+        case 8:
+            const char* filename8 = "database.txt"; // Имя файла
+            FILE* file8 = fopen(filename8, "a"); // Открываем файл для добавления
+            if (!file8) {
+                printf("Не удается открыть файл.\n");
+                return;
+            }
+
+            char buffer[256];
+            int line_count;
+
+            printf("Введите количество строк для добавления: ");
+            scanf("%d", &line_count);
+            getchar(); // Очистка буфера после scanf
+
+            for (int i = 0; i < line_count; i++) {
+                printf("Введите строку %d: ", i + 1);
+                fgets(buffer, sizeof(buffer), stdin);
+                fputs(buffer, file8); // Записываем строку в файл
+            }
+
+            fclose(file8);
+            printf("Строки успешно добавлены в файл '%s'.\n", filename8);
+            return 0;
+
+        case 9:
+            const char* filename9 = "database.txt";
+            FILE* file9 = fopen(filename9, "r");
+            if (!file9) {
+                printf("Не удается открыть файл.\n");
+                return;
+            }
+            int line_number9;
+            printf("Введите номер строки для изменения: ");
+            scanf("%d", &line_number9);
+            getchar(); // Очистка буфера после scanf
+
+            // Считаем количество строк в файле
+            char** lines9 = NULL;
+            char buffer9[256];
+            int count9 = 0;
+
+            while (fgets(buffer9, sizeof(buffer9), file9)) {
+                lines9 = realloc(lines9, sizeof(char*) * (count9 + 1));
+                lines9[count9] = _strdup(buffer9);
+                count9++;
+            }
+
+            // Получаем новую строку от пользователя
+            printf("Введите новую строку: ");
+            fgets(buffer9, sizeof(buffer9), stdin);
+
+            // Изменяем строку
+            free(lines9[line_number9 - 1]); // Освобождаем память старой строки
+            lines9[line_number9 - 1] = _strdup(buffer9); // И сохраняем новую строку
+
+            // Записываем все строки обратно в файл
+            file9 = fopen(filename9, "w");
+            if (!file9) {
+                printf("Не удается открыть файл.\n");
+                for (int i = 0; i < count9; i++) {
+                    free(lines9[i]);
+                }
+                free(lines9);
+                return;
+            }
+
+            for (int i = 0; i < count9; i++) {
+                fputs(lines9[i], file9);
+                free(lines9[i]); // Освобождаем память
+            }
+
+            free(lines9);
+            fclose(file9);
+            printf("Строка %d успешно изменена.\n", line_number9);
+
+
+            return 0;
+        case 10:
+            printf("Программа принудительно завершена");
+            break;
         }
 
-        for (int i = 0; i < count; i++) {
-            fputs(lines[i], file);
-            free(lines[i]); // Освобождаем память
-        }
-
-        free(lines);
-        fclose(file);
-        printf("Строка %d успешно изменена.\n", line_number);
-
-
-    return 0;
-    case 10:
-        printf("Программа принудительно завершена");
-        break;
-    return 0;
+        return 0;
 }
