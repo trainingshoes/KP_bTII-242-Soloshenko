@@ -13,6 +13,9 @@ typedef struct {
     char word[MAX_WORD_LEN]; // Производитель
     char word5[MAX_WORD_LEN]; // Тип
     float value1; // Диагональ экрана
+    char SIM[MAX_WORD_LEN]; // Поддержка SIM-карт
+    char sovmest[MAX_WORD_LEN]; // Совместимость с другими ОС
+
 };
 
 
