@@ -15,6 +15,7 @@ typedef struct {
     float value1; // Диагональ экрана
     char SIM[MAX_WORD_LEN]; // Поддержка SIM-карт
     char sovmest[MAX_WORD_LEN]; // Совместимость с другими ОС
+    double price; // Стоимость
 
 };
 
